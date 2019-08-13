@@ -2,7 +2,7 @@
 
 
 require("dotenv").config();
-//OH SO MANY VAR's
+
 const keys = require("./keys.js");
 const request = require("request");
 const Spotify = require("node-spotify-api");
