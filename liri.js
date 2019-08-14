@@ -2,20 +2,21 @@
 
 
 require("dotenv").config();
-//OH SO MANY VAR's
+
 const keys = require("./keys.js");
 const request = require("request");
 const Spotify = require("node-spotify-api");
+const spotify = new Spotify(keys.spotify);
 const fs = require("fs");
 const moment = require("moment");
-//VAR's for user action and inputs
+//const's for user action and inputs
 const input = process.argv;
 const action = input[2];
 const inputs = input.slice(3).join(" ");
 //Switches for user actions
 switch (action) {
   case "spotify-this-song":
-    spotify(inputs);
+    spotifysong(inputs);
     break;
 
   case "movie-this":
@@ -86,12 +87,9 @@ function doIt(inputs) {
 }
 
 //Spotify API call
-function spotify(inputs) {
+function spotifysong(inputs) {
   //.ENV stored keys to stay hidden
-  var spotify = new Spotify({
-    id: process.env.SPOTIFY_ID,
-    secret: process.env.SPOTIFY_SECRET
-  });
+  
 
   if (inputs === undefined || null) {
     inputs = "TESTING";
